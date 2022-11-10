@@ -15,8 +15,15 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('TraktorDb')
 
-traktors = SHEET.worksheet('traktors')
+def add_traktors():
+    """
+    gets new traktor data from the user
+    """
+    print("Enter a new traktor to the system")
+    print("Data entered should be seperated by commas in this format:")
+    print(f"<name>, <year>, <color>, <model>\nExample: \"Ford, 2001, blue, F-310\"")
 
-data = traktors.get_all_values()
+    data_str = input("Enter the data: ")
+    print(f"the data enterer is \"{data_str}\"")
 
-print(data)
+add_traktors()
