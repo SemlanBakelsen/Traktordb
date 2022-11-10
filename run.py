@@ -20,10 +20,27 @@ def add_traktors():
     gets new traktor data from the user
     """
     print("Enter a new traktor to the system")
-    print("Data entered should be seperated by commas in this format:")
-    print(f"<name>, <year>, <color>, <model>\nExample: \"Ford, 2001, blue, F-310\"")
+    print("Data entered should be seperated by comma and a space in this format:")
+    print("<name>, <year>, <color>, <model>\nExample: \"Ford, 2001, blue, F-310\"")
 
     data_str = input("Enter the data: ")
-    print(f"the data enterer is \"{data_str}\"")
+
+    traktors_data = data_str.split(", ")
+    validate_data(traktors_data)
+
+def validate_data(values):
+    """
+    Checks if there are 4 strings,
+    raise error if there are more or less strings
+    """
+
+    try:
+        if len(values) != 4:
+            raise ValueError(
+                f"Four values excepted, {len(values)} was entered."
+            )
+    except ValueError as e:
+        print(f"Invalid data: {e}, please try again.\n")
+
 
 add_traktors()
