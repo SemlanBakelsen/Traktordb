@@ -31,6 +31,8 @@ def add_traktors():
         if validate_data(traktors_data):
             print("Data enterd is valid.")
             break
+    
+    return traktors_data
 
 def validate_data(values):
     """
@@ -48,4 +50,4 @@ def validate_data(values):
         return False
     return True
 
-add_traktors()
+data = add_traktors()
