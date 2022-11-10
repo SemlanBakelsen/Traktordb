@@ -19,14 +19,18 @@ def add_traktors():
     """
     gets new traktor data from the user
     """
-    print("Enter a new traktor to the system")
-    print("Data entered should be seperated by comma and a space in this format:")
-    print("<name>, <year>, <color>, <model>\nExample: \"Ford, 2001, blue, F-310\"")
+    while True:
+        print("Enter a new traktor to the system")
+        print("Data entered should be seperated by comma and a space in this format:")
+        print("<name>, <year>, <color>, <model>\nExample: \"Ford, 2001, blue, F-310\"")
 
-    data_str = input("Enter the data: ")
+        data_str = input("Enter the data: ")
 
-    traktors_data = data_str.split(", ")
-    validate_data(traktors_data)
+        traktors_data = data_str.split(", ")
+
+        if validate_data(traktors_data):
+            print("Data enterd is valid.")
+            break
 
 def validate_data(values):
     """
@@ -41,6 +45,7 @@ def validate_data(values):
             )
     except ValueError as e:
         print(f"Invalid data: {e}, please try again.\n")
-
+        return False
+    return True
 
 add_traktors()
